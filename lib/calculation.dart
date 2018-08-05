@@ -192,22 +192,26 @@ void savings (double value){
   //case-3 if taxableIncome is >5,00,000 || <10,00,000 = (taxableIncome- 500000)*0.20+12500
   //case-4 if taxableIncome is >10,00,000 = (taxableIncome- 1000000)*0.30+112500
 
-   if(taxableIncome <250000.0){
+   if(taxableIncome <=250000.0){
      incomeTax = 0.0;
-   }else{
-     if((taxableIncome >250000.0) && (taxableIncome <500000.0)){
-       incomeTax=(taxableIncome- 500000)*0.05;
-       surcharge = incomeTax *0.04;
-     }else{
-       if((taxableIncome >500000.0) && (taxableIncome <1000000.0)){
-         incomeTax=((taxableIncome- 500000)*0.20)+12500.0;
-         surcharge = incomeTax *0.04;
-       }else{
-         incomeTax=((taxableIncome- 1000000)*0.30)+112500.0;
-         surcharge = incomeTax *0.04;
-       }
-     }
    }
+
+   if ((taxableIncome >250000.0) && (taxableIncome <=500000.0)){
+     incomeTax=(taxableIncome- 500000)*0.05;
+     surcharge = incomeTax *0.04;
+   }
+
+   if((taxableIncome >500000.0) && (taxableIncome <=1000000.0)){
+     incomeTax=((taxableIncome- 500000)*0.20)+12500.0;
+     surcharge = incomeTax *0.04;
+   }
+
+   if(taxableIncome> 1000000.0){
+     incomeTax=((taxableIncome- 1000000.0)*0.30)+112500.0;
+     surcharge = incomeTax *0.04;
+   }
+
+
 }
 
 class Calculation extends StatefulWidget {
